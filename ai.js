@@ -42,5 +42,12 @@ function turn(squareId, player) {
 
 //function for the checkwin 
 function checkWin(board, player) {
+    //check what places on board have already been played in
+    let plays = board.reduce((a, e, i) =>
+        (e === player)) ? a.concat(i) : a, [];
+    let gameWon = null;
+    //check if game is won
+    for (let [index, win] of winCombos.entries()) {
 
+    }
 }
