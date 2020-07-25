@@ -1,5 +1,5 @@
 var origBoard;
-const huPlayer = '0';
+const huPlayer = 'O';
 const aiPlayer = 'X';
 //winning combos available 
 const winCombos = [
@@ -19,4 +19,28 @@ startGame();
 
 function startGame() {
     document.querySelector(".endgame").style.display = "none";
+    origBoard = Array.from(Array(9).keys());
+    //For loop to remove x & o from board when game restart
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].innerText = '';
+        cells[i].style.removeProperty('background-color')
+        cells[i].addEventListener('click', turnClick, false);
+    }
+}
+
+function turnClick(square) {
+    turn(square.target.id, huPlayer)
+}
+
+function turn(squareId, player) {
+    origBoard[squareId] = player;
+    document.getElementById(squareId).innerText = player;
+    //check if game is won
+    let gameWon = checkWin(origBoard, player)
+    if (gameWon) gameOver(gameWon)
+}
+
+//function for the checkwin 
+function checkWin(board, player) {
+
 }
