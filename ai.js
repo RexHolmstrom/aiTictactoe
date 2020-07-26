@@ -46,8 +46,10 @@ function checkWin(board, player) {
     let plays = board.reduce((a, e, i) =>
         (e === player)) ? a.concat(i) : a, [];
     let gameWon = null;
-    //check if game is won
+    //check if game is won by looping through every possible win combo 
     for (let [index, win] of winCombos.entries()) {
+        if (win.every(elem => plays.indexOf(elem > -1)) {
 
+        })
     }
 }
