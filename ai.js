@@ -40,16 +40,32 @@ function turn(squareId, player) {
     if (gameWon) gameOver(gameWon)
 }
 
+
+
 //function for the checkwin 
 function checkWin(board, player) {
     //check what places on board have already been played in
     let plays = board.reduce((a, e, i) =>
-        (e === player)) ? a.concat(i) : a, [];
+        (e === player) ? a.concat(i) : a, []);
     let gameWon = null;
     //check if game is won by looping through every possible win combo 
     for (let [index, win] of winCombos.entries()) {
-        if (win.every(elem => plays.indexOf(elem > -1)) {
+        //has the player in everyspot that counts as a win,if 
+        if (win.every(elem => plays.indexOf(elem) > -1)) {
+            gameWon = { index: index, player: player }
+            break;
+        }
+    }
+    return gameWon;
+}
 
-        })
+function gameOver(gameWon) {
+    for (let index of winCombos[gameWon.index]) {
+        document.getElementById(index).style.backgroundColor =
+            //if human player win, bkgrndcolor = blue, for ai = red 
+            gameWon.player == huPlayer ? "blue" : "red";
+    }
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].removeEventListener('click', turnClick, false)
     }
 }
