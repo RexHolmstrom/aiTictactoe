@@ -118,7 +118,7 @@ function minimax(newBoard, player) {
     var availSpots = emptySquares(newBoard);
     //check if someone is winning
     // returning value accordingly  
-    if (checkWin(newBoard, player)) {
+    if (checkWin(newBoard, huPlayer)) {
         return { score: -10 };
     } else if (checkWin(newBoard, aiPlayer)) {
         return { score: 10 };

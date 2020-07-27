@@ -9,7 +9,9 @@
 </head>
 
 <body>
-
+    <video autoplay muted loop id="myVideo">
+        <source src="img/citybkrnd.mp4" type="video/mp4">
+    </video>
     <table>
         <tr>
             <td class="cell" id="0"></td>
@@ -31,10 +33,12 @@
     <div class="endgame">
         <div class="text"></div>
     </div>
-
-    <button onClick="startGame()">Replay</button>
-
+    <div class="btn">
+        <button class="replaybtn" onClick="startGame()">Replay</button>
+    </div>
     <script src="ai.js"></script>
+
+
 </body>
 
 </html>
