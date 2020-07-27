@@ -80,7 +80,7 @@ function gameOver(gameWon) {
     declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose.");
 }
 
-//decalre winner function passing in who for the declared winner
+//declare winner function passing in who for the declared winner
 function declareWinner(who) {
     document.querySelector(".endgame").style.display = "block";
     document.querySelector(".endgame .text").innerText = who;
