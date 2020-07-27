@@ -95,7 +95,7 @@ function emptySquares() {
 
 //best spot function, to find a spot for ai player to play
 function bestSpot() {
-    return emptySquares()[0];
+    return minimax(origBoard, aiPlayer).index;
 }
 //check tie function
 //checking if there is any empty squares left, if not = tie
@@ -109,4 +109,18 @@ function checkTie() {
         return true;
     }
     return false;
+}
+
+//Minimax function
+
+
+function minimax(newBoard, player) {
+    var availSpots = emptySquares(newBoard);
+    //check if someone is winning
+    // returning value accordingly  
+    if (checkWin(newBoard, player)) {
+        return { score: -10 };
+    } else if (checkWin(newBoard, aiPlayer)) {
+        return { score: 20 };
+    }
 }
