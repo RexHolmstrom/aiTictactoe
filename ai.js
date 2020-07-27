@@ -30,7 +30,7 @@ function startGame() {
 
 function turnClick(square) {
     // check if human or ai player have played in that spot 
-    if (!typeof origBoard[square.target.id] == 'number') {
+    if (typeof origBoard[square.target.id] == 'number') {
         //if nobody have played in that spot 
         //following
         //human player taking a turn
@@ -77,6 +77,7 @@ function gameOver(gameWon) {
     for (var i = 0; i < cells.length; i++) {
         cells[i].removeEventListener('click', turnClick, false)
     }
+    declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose.");
 }
 
 //decalre winner function passing in who for the declared winner
