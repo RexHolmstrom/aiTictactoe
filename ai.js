@@ -29,13 +29,16 @@ function startGame() {
 }
 
 function turnClick(square) {
+    // check if human or ai player have played in that spot 
     if (!typeof origBoard[square.target.id] == 'number') {
-
+        //if nobody have played in that spot 
+        //following
+        //human player taking a turn
+        turn(square.target.id, huPlayer)
+        //ai taking a turn 
+        if (!checkTie()) turn(bestSpot(), aiPlayer);
     }
-    //human player taking a turn
-    turn(square.target.id, huPlayer)
-    //ai taking a turn 
-    if (!checkTie()) turn(bestSpot(), aiPlayer);
+
 }
 
 function turn(squareId, player) {
@@ -76,3 +79,33 @@ function gameOver(gameWon) {
     }
 }
 
+//decalre winner function passing in who for the declared winner
+function declareWinner(who) {
+    document.querySelector(".endgame").style.display = "block";
+    document.querySelector(".endgame .text").innerText = who;
+}
+
+//empty squares function
+function emptySquares() {
+    //filter if type of element = a number
+    //if we want to return number 
+    return origBoard.filter(s => typeof s == 'number');
+}
+
+//best spot function, to find a spot for ai player to play
+function bestSpot() {
+    return emptySquares()[0];
+}
+//check tie function
+//checking if there is any empty squares left, if not = tie
+function checkTie() {
+    if (emptySquares().length == 0) {
+        for (var i = 0; i < cells.length; i++) {
+            cells[i].style.backgroundColor = 'green';
+            cells[i].removeEventListener('click', turnClick, false);
+        }
+        declareWinner("Tie Game!")
+        return true;
+    }
+    return false;
+}
